@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/NgulikSynth/static/css/main.cd6ffb64.css",
+    "main.js": "/NgulikSynth/static/js/main.b2b0b176.js",
+    "static/js/453.30bcb3eb.chunk.js": "/NgulikSynth/static/js/453.30bcb3eb.chunk.js",
+    "index.html": "/NgulikSynth/index.html",
+    "main.cd6ffb64.css.map": "/NgulikSynth/static/css/main.cd6ffb64.css.map",
+    "main.b2b0b176.js.map": "/NgulikSynth/static/js/main.b2b0b176.js.map",
+    "453.30bcb3eb.chunk.js.map": "/NgulikSynth/static/js/453.30bcb3eb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cd6ffb64.css",
+    "static/js/main.b2b0b176.js"
+  ]
+}
