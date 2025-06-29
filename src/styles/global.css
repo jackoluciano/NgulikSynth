@@ -1,0 +1,213 @@
+/* ================ GLOBAL STYLES ================ */
+:root {
+  --primary-color: #0075FF;
+  --primary-hover: #005bb5;
+  --disabled-color: #777;
+  --bg-gradient: linear-gradient(to bottom right, #d5d5d5, rgb(99, 99, 99));
+  --note-btn-gradient: linear-gradient(to right, #b3b3b3, #909090);
+  --note-btn-active: linear-gradient(to right, #a2a2a2, #454545a5);
+  --canvas-bg: #111;
+  --border-color: #333;
+}
+
+/* ================ BASE STYLES ================ */
+.Body {
+  background: var(--bg-gradient);
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 2rem 5%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ================ SYNTH CONTROLS ================ */
+.synth-controls-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  gap: 1.5rem;
+}
+
+.canvas-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.canvas {
+  background: var(--canvas-bg);
+  border: 1px solid var(--border-color);
+  margin-bottom: 3%;
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ================ BUTTONS ================ */
+.button-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.button {
+  padding: 0.75rem 1.5rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.button:disabled {
+  background: var(--disabled-color);
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ================ KNOBS ================ */
+.knob-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.knob-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+
+.knob-item label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.knob-input {
+  width: 80px;
+  height: 120px;
+  margin: 0;
+}
+
+/* ================ NOTE SELECTOR ================ */
+.note-selector-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 600px;
+  margin-top: -40px;
+}
+
+.note-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.note-button {
+  height: 40px;
+  width: 60px;
+  padding: 0;
+  background: var(--note-btn-gradient);
+  color: #000;
+  border: 2px solid rgb(72, 72, 72);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.note-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.note-button.active {
+  background: var(--note-btn-active);
+  color: white;
+  transform: translateY(0);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ================ RESPONSIVE DESIGN ================ */
+@media (max-width: 768px) {
+  .Body {
+    padding: 1rem;
+  }
+  
+  .canvas {
+    max-width: 100%;
+    height: 150px;
+  }
+  
+  .knob-section {
+    gap: 1rem;
+  }
+  
+  .knob-item {
+    min-width: 70px;
+  }
+  
+  .knob-input {
+    width: 70px;
+    height: 100px;
+  }
+  
+  .note-button {
+    width: 40px;
+    height: 35px;
+    font-size: 0.8rem;
+  }
+  
+  .button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .note-row {
+    gap: 0.3rem;
+  }
+  
+  .note-button {
+    width: 27px;
+    height: 30px;
+    font-size: 0.7rem;
+  }
+  
+  .knob-item {
+    min-width: 60px;
+  }
+  
+  .knob-input {
+    width: 60px;
+    height: 80px;
+  }
+}

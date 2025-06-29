@@ -9,7 +9,10 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-scripts": "5.0.1",
+    "react-router-dom": "^7.6.3",
+    "react-scripts": "^5.0.1",
+    "tonal": "^6.4.2",
+    "tone": "^15.1.22",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -35,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
