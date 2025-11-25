@@ -1,3 +1,5 @@
+/* ====== THEME VARIABLES ====== */
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -24,15 +26,8 @@
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-  /* Bright yellow background with black elements */
+
+  /* Brutalist yellow theme */
   --color-bg-primary: #ffff00;
   --color-bg-secondary: #ffff99;
   --color-bg-tertiary: #ffcc00;
@@ -68,27 +63,41 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
 }
 
-/* Bright yellow background, chaotic brutallist layout */
+/* ====== GLOBAL RESET ====== */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--color-bg-primary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+/* ====== MAIN LAYOUT ====== */
+
 .Body {
   background: var(--color-bg-primary);
   min-height: 100vh;
-  padding: 0 1.2rem;
+  padding-inline: 1.2rem;
+  padding-block: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   position: relative;
   overflow-x: hidden;
+
+  /* biar width di dev & deploy konsisten */
+  max-width: 80rem;
+  margin-inline: auto;
+  box-sizing: border-box; /* Penting! */
 }
 
 .synth-controls-container {
@@ -99,48 +108,50 @@
   position: relative;
 }
 
-/* Bold header with chaotic rotation and offset */
+/* ====== HEADER ====== */
+
 .synth-header {
-  font-size: 4rem;
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
   font-weight: 900;
   letter-spacing: 0.12em;
   color: var(--color-text-primary);
   text-transform: uppercase;
   font-family: monospace;
-  text-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
-  transform: rotate(-2deg) translateX(-10px) translateY(-30px);
-  margin-bottom: 0rem;
+  text-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.3);
+  transform: rotate(-2deg) translateX(-0.6rem);
+  margin-block: 3rem 0.2rem;
   line-height: 1;
 }
 
-/* Chaotic canvas container - slightly tilted */
+/* ====== CANVAS & BUTTONS ====== */
+
 .canvas-button-container {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.2rem;
   width: 85%;
   align-items: flex-start;
+  min-width: 300px; 
+  max-width: 40rem;
   transform: rotate(1.5deg);
   margin-left: 2%;
 }
 
-/* Thick border, raw aesthetic */
 .canvas {
   width: 100%;
-  max-width: 650px;
-  height: 180px;
+  max-width: 40rem;
+  height: 11rem;
   background: var(--color-bg-secondary);
-  border: 8px solid var(--color-text-primary);
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: all 0.2s;
+  border: 0.5rem solid var(--color-text-primary);
+  box-shadow: 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .canvas:hover {
-  transform: translate(3px, 3px);
-  box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.15);
+  transform: translate(0.2rem, 0.2rem);
+  box-shadow: 0.75rem 0.75rem 0 rgba(0, 0, 0, 0.15);
 }
 
-/* Buttons with chaotic positioning and irregular sizing */
 .button-container {
   display: flex;
   gap: 1rem;
@@ -149,9 +160,9 @@
 }
 
 .button {
-  padding: 1rem 2rem;
+  padding: 0.8rem 1.8rem;
   background: var(--color-text-primary);
-  border: 4px solid var(--color-text-primary);
+  border: 0.25rem solid var(--color-text-primary);
   color: var(--color-bg-primary);
   cursor: pointer;
   font-weight: 900;
@@ -159,39 +170,33 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-family: monospace;
-  transition: all 0.1s;
+  transition: transform 0.1s, box-shadow 0.1s;
   position: relative;
-  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0.3rem 0.3rem 0 rgba(0, 0, 0, 0.3);
 }
 
-/* Irregular button sizes and rotations */
 .button:nth-child(1) {
   transform: rotate(-1.5deg);
-  padding: 1.2rem 2.5rem;
-  font-size: 0.9rem;
 }
 
 .button:nth-child(2) {
   transform: rotate(0.8deg);
-  padding: 0.9rem 1.8rem;
-  font-size: 0.8rem;
-  margin-top: -0.5rem;
+  margin-top: -0.3rem;
 }
 
 .button:nth-child(3) {
   transform: rotate(-0.5deg);
-  padding: 1rem 2.2rem;
   margin-left: 1rem;
 }
 
 .button:hover:not(:disabled) {
-  transform: translate(-2px, -2px) rotate(var(--rotation));
-  box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.25);
+  transform: translate(-0.15rem, -0.15rem);
+  box-shadow: 0.45rem 0.45rem 0 rgba(0, 0, 0, 0.25);
 }
 
 .button:active:not(:disabled) {
-  transform: translate(1px, 1px);
-  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+  transform: translate(0.1rem, 0.1rem);
+  box-shadow: 0.15rem 0.15rem 0 rgba(0, 0, 0, 0.2);
 }
 
 .button:disabled {
@@ -199,15 +204,17 @@
   color: var(--color-bg-primary);
   cursor: not-allowed;
   opacity: 0.7;
-  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0.3rem 0.3rem 0 rgba(0, 0, 0, 0.15);
 }
+
+/* ====== KNOBS ====== */
 
 .canvas-knob-container {
   display: flex;
   align-items: flex-start;
   gap: 3rem;
   width: 100%;
-  margin-top: 0.2rem;
+  margin-top: 0.4rem;
 }
 
 .knob-section {
@@ -215,37 +222,26 @@
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 1.2rem;
-
-  padding: 1.4rem 1.6rem;
+  gap: 0.8rem;
+  padding: 1.2rem 1.4rem;
   background: var(--color-bg-tertiary);
-  border: 7px solid var(--color-text-primary);
-  box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.25);
+  border: 0.44rem solid var(--color-text-primary);
+  box-shadow: 0.44rem 0.44rem 0 rgba(0, 0, 0, 0.25);
   transform: rotate(-0.8deg) skewY(0.5deg);
-
-  width: max-content; 
+  width: max-content;
   margin-left: auto;
   flex-shrink: 0;
 }
 
-/* Inconsistent knob item sizing and spacing */
 .knob-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.2rem;
-}
-
-.knob-item:nth-child(even) {
-  transform: translateY(1rem);
-}
-
-.knob-item:nth-child(3n) {
-  transform: scaleY(1.05);
+  gap: 0.4rem;
 }
 
 .knob-item label {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 900;
   color: var(--color-text-primary);
   letter-spacing: 0.1em;
@@ -255,145 +251,131 @@
   line-height: 1.2;
 }
 
-/* Knob sliders with raw borders, chaotic sizing */
 .knob-input {
-  width: 80px;
-  height: 120px;
+  width: 3.5rem;
+  height: 5rem;
   -webkit-appearance: slider-vertical;
   writing-mode: bt-lr;
   cursor: pointer;
   background: var(--color-bg-primary);
-  border: 4px solid var(--color-text-primary);
-  padding: 4px;
+  border: 0.25rem solid var(--color-text-primary);
+  padding: 0.25rem;
   accent-color: var(--color-text-primary);
-  transition: all 0.1s;
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
-}
-
-.knob-input:nth-child(1) {
-  height: 130px;
-  border-width: 5px;
-}
-
-.knob-input:nth-child(2) {
-  height: 115px;
-  transform: scaleX(1.1);
+  transition: transform 0.1s, box-shadow 0.1s;
+  box-shadow: 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.2);
 }
 
 .knob-input:hover {
-  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.18);
-  transform: translate(1px, -2px);
+  box-shadow: 0.35rem 0.35rem 0 rgba(0, 0, 0, 0.18);
+  transform: translate(0.06rem, -0.12rem);
 }
 
 .knob-input:active {
-  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0.12rem 0.12rem 0 rgba(0, 0, 0, 0.15);
 }
 
-/* Note selector with chaotic positioning */
+/* ====== PIANO ====== */
+
 .note-selector-item-container {
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 1.2rem;
 }
 
-/* Piano keyboard container - chaotic brutallist layout */
 .piano-keyboard-container {
   background: var(--color-bg-primary);
-  border: 7px solid var(--color-text-primary);
+  border: 0.44rem solid var(--color-text-primary);
   padding: 1rem;
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.2);
   transform: rotate(0.5deg);
-  width: 95%;
-  margin-left: auto;
-  margin-right: 1%;
+  width: 100%; /* ubah dari 90% */
+  max-width: 90%;
+  margin-inline: auto;
   overflow: hidden;
 }
 
-/* Smaller, longer piano layout */
 .piano-keyboard {
   display: flex;
   gap: 0;
   justify-content: flex-start;
-  align-items: flex-end;
+  align-items: flex-start;
   flex-wrap: nowrap;
   position: relative;
-  height: 160px;
-  padding: 0.7rem 1rem;
+  height: 10rem;
+  padding: 0.75rem 0.75rem 1rem;
   background: var(--color-bg-secondary);
-  border: 4px solid var(--color-text-primary);
-  box-shadow: inset 3px 3px 0 rgba(0, 0, 0, 0.1);
+  border: 0.25rem solid var(--color-text-primary);
+  box-shadow: inset 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.1);
   overflow-x: auto;
+  overflow-y: hidden;
+  /* Tambahkan ini untuk smooth scrolling */
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 
-/* Smaller white keys */
 .piano-key.white-key {
-  width: 32px;
-  height: 140px;
+  width: 2rem;
+  height: 8.5rem;
   background: #f5f5f5;
-  border: 2px solid var(--color-text-primary);
-  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+  border: 0.125rem solid var(--color-text-primary);
+  box-shadow: 0.18rem 0.18rem 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
   font-weight: 700;
   font-size: 0.5rem;
   font-family: monospace;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  transition: all 0.1s;
+  transition: transform 0.1s, box-shadow 0.1s;
   display: flex;
   align-items: flex-end;
-  align-self: flex-start;
   justify-content: center;
-  padding-bottom: 6px;
+  padding-bottom: 0.4rem;
   position: relative;
   color: var(--color-text-primary);
   flex-shrink: 0;
   overflow: visible;
   white-space: nowrap;
-  /* Black keys no longer positioned absolute, use margin instead */
 }
 
-/* Smaller black keys - nempel di atas */
 .piano-key.black-key {
-  width: 20px;
-  height: 90px;
-  background: #000000;
-  border: 2px solid var(--color-text-primary);
-  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+  width: 1.25rem;
+  height: 5.5rem;
+  background: #000;
+  border: 0.125rem solid var(--color-text-primary);
+  box-shadow: 0.18rem 0.18rem 0 rgba(0, 0, 0, 0.35);
   cursor: pointer;
   font-weight: 700;
   font-size: 0.45rem;
   font-family: monospace;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  transition: all 0.1s;
+  transition: transform 0.1s, box-shadow 0.1s;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding-bottom: 4px;
+  padding-bottom: 0.25rem;
   position: relative;
   color: #ffff00;
   flex-shrink: 0;
   overflow: visible;
   white-space: nowrap;
-  /* Nempel ke atas container, overlap dengan white keys di samping */
-  align-self: flex-start;
-  margin-right: -6px;
+  margin-top: 0rem;
+  margin-right: -0.35rem;
 }
 
 .key-label {
   display: block;
   line-height: 1;
-  /* Ensure label is visible */
   pointer-events: none;
-  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+  text-shadow: 0.06rem 0.06rem 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Active key - bright, elevated appearance */
 .piano-key.active {
-  transform: translate(-2px, -2px) !important;
-  box-shadow: 4px 4px 0 rgba(255, 255, 0, 0.5), 6px 6px 0 rgba(0, 0, 0, 0.25) !important;
+  transform: translate(-0.12rem, -0.12rem) !important;
+  box-shadow: 0.25rem 0.25rem 0 rgba(255, 255, 0, 0.5),
+    0.38rem 0.38rem 0 rgba(0, 0, 0, 0.25) !important;
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
-  border-width: 3px;
+  border-width: 0.18rem;
 }
 
 .piano-key.active.black-key {
@@ -401,125 +383,84 @@
   color: #000;
 }
 
-/* Hover effect */
 .piano-key:hover:not(.active) {
-  transform: translate(-1px, -1px) !important;
-  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.15) !important;
+  transform: translate(-0.06rem, -0.06rem) !important;
+  box-shadow: 0.18rem 0.18rem 0 rgba(0, 0, 0, 0.15) !important;
 }
 
 .piano-key:active {
-  transform: translate(1px, 1px) !important;
-  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1) !important;
+  transform: translate(0.06rem, 0.06rem) !important;
+  box-shadow: 0.06rem 0.06rem 0 rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .piano-keyboard {
-    height: 180px;
-    padding: 1rem 0.8rem;
-    gap: 0;
-  }
-
-  .piano-key.white-key {
-    width: 28px;
-    height: 120px;
-    font-size: 0.45rem;
-  }
-
-  .piano-key.black-key {
-    width: 18px;
-    height: 80px;
-    font-size: 0.4rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .piano-key.white-key {
-    width: 24px;
-    height: 100px;
-    font-size: 0.4rem;
-  }
-
-  .piano-key.black-key {
-    width: 16px;
-    height: 70px;
-    font-size: 0.35rem;
-  }
-
-  .piano-keyboard {
-    height: 150px;
-    padding: 0.8rem 0.6rem;
-  }
-}
+/* ====== RESPONSIVE ====== */
 
 @media (max-width: 768px) {
   .Body {
-    padding: 1.5rem 1rem;
+    padding-inline: 1rem;
   }
 
   .synth-header {
-    font-size: 2.5rem;
-    transform: rotate(-1.5deg) translateX(-10px);
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
+    transform: rotate(-1.5deg) translateX(-0.6rem);
   }
 
-  .canvas-knob-container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .knob-section {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem 2rem;
-    padding: 2rem;
+  .canvas-button-container {
     width: 100%;
-    margin-left: 0;
   }
 
   .canvas {
-    height: 180px;
-    border-width: 6px;
+    height: 9.5rem;
     max-width: 100%;
   }
 
-  .button {
-    padding: 0.9rem 1.5rem;
-    font-size: 0.75rem;
+  .knob-section {
+    transform: rotate(-0.5deg) skewY(0.3deg);
   }
 
-  .note-selector-container {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
+  .piano-keyboard {
+    height: 9rem;
+    padding: 0.6rem 0.6rem 0.9rem;
+  }
+
+  .piano-key.white-key {
+    width: 1.7rem;
+    height: 7.3rem;
+  }
+
+  .piano-key.black-key {
+    width: 1.1rem;
+    height: 5rem;
+    margin-top: -3.1rem;
   }
 }
 
 @media (max-width: 480px) {
   .Body {
-    padding: 1rem;
+    padding-inline: 0.8rem;
   }
 
   .synth-header {
-    font-size: 1.8rem;
-  }
-
-  .knob-section {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem 1.5rem;
-    padding: 1.5rem;
-  }
-
-  .knob-input {
-    width: 70px;
-    height: 100px;
-  }
-
-  .note-button {
-    width: 45px;
-    height: 38px;
-    font-size: 0.7rem;
+    font-size: clamp(1.6rem, 7vw, 2rem);
   }
 
   .canvas {
-    height: 150px;
+    height: 8.5rem;
+  }
+
+  .piano-keyboard {
+    height: 8.2rem;
+    padding: 0.5rem 0.5rem 0.8rem;
+  }
+
+  .piano-key.white-key {
+    width: 1.5rem;
+    height: 6.7rem;
+  }
+
+  .piano-key.black-key {
+    width: 1rem;
+    height: 4.6rem;
+    margin-top: -2.9rem;
   }
 }
