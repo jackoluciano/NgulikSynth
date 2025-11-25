@@ -1,213 +1,525 @@
-/* ================ GLOBAL STYLES ================ */
 :root {
-  --primary-color: #0075FF;
-  --primary-hover: #005bb5;
-  --disabled-color: #777;
-  --bg-gradient: linear-gradient(to bottom right, #d5d5d5, rgb(99, 99, 99));
-  --note-btn-gradient: linear-gradient(to right, #b3b3b3, #909090);
-  --note-btn-active: linear-gradient(to right, #a2a2a2, #454545a5);
-  --canvas-bg: #111;
-  --border-color: #333;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+  /* Bright yellow background with black elements */
+  --color-bg-primary: #ffff00;
+  --color-bg-secondary: #ffff99;
+  --color-bg-tertiary: #ffcc00;
+  --color-accent-yellow: #000000;
+  --color-accent-yellow-light: #333333;
+  --color-text-primary: #000000;
+  --color-text-secondary: #333333;
+  --color-border: #000000;
 }
 
-/* ================ BASE STYLES ================ */
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+/* Bright yellow background, chaotic brutallist layout */
 .Body {
-  background: var(--bg-gradient);
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 2rem 5%;
+  background: var(--color-bg-primary);
   min-height: 100vh;
+  padding: 0 1.2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  overflow-x: hidden;
 }
 
-/* ================ SYNTH CONTROLS ================ */
 .synth-controls-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
-  max-width: 900px;
-  gap: 1.5rem;
+  gap: 0.5rem;
+  position: relative;
 }
 
-.canvas-container {
+/* Bold header with chaotic rotation and offset */
+.synth-header {
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  font-family: monospace;
+  text-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
+  transform: rotate(-2deg) translateX(-10px) translateY(-30px);
+  margin-bottom: 0rem;
+  line-height: 1;
+}
+
+/* Chaotic canvas container - slightly tilted */
+.canvas-button-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
-  gap: 1rem;
+  gap: 1.5rem;
+  width: 85%;
+  align-items: flex-start;
+  transform: rotate(1.5deg);
+  margin-left: 2%;
 }
 
+/* Thick border, raw aesthetic */
 .canvas {
-  background: var(--canvas-bg);
-  border: 1px solid var(--border-color);
-  margin-bottom: 3%;
   width: 100%;
-  height: 200px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 650px;
+  height: 180px;
+  background: var(--color-bg-secondary);
+  border: 8px solid var(--color-text-primary);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.2s;
 }
 
-/* ================ BUTTONS ================ */
+.canvas:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Buttons with chaotic positioning and irregular sizing */
 .button-container {
   display: flex;
   gap: 1rem;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .button {
-  padding: 0.75rem 1.5rem;
-  background: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 4px;
+  padding: 1rem 2rem;
+  background: var(--color-text-primary);
+  border: 4px solid var(--color-text-primary);
+  color: var(--color-bg-primary);
   cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: 900;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: monospace;
+  transition: all 0.1s;
+  position: relative;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
 }
 
-.button:hover {
-  background: var(--primary-hover);
-  transform: translateY(-1px);
+/* Irregular button sizes and rotations */
+.button:nth-child(1) {
+  transform: rotate(-1.5deg);
+  padding: 1.2rem 2.5rem;
+  font-size: 0.9rem;
+}
+
+.button:nth-child(2) {
+  transform: rotate(0.8deg);
+  padding: 0.9rem 1.8rem;
+  font-size: 0.8rem;
+  margin-top: -0.5rem;
+}
+
+.button:nth-child(3) {
+  transform: rotate(-0.5deg);
+  padding: 1rem 2.2rem;
+  margin-left: 1rem;
+}
+
+.button:hover:not(:disabled) {
+  transform: translate(-2px, -2px) rotate(var(--rotation));
+  box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.25);
+}
+
+.button:active:not(:disabled) {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
 .button:disabled {
-  background: var(--disabled-color);
+  background: var(--color-accent-yellow-light);
+  color: var(--color-bg-primary);
   cursor: not-allowed;
-  transform: none;
+  opacity: 0.7;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.15);
 }
 
-/* ================ KNOBS ================ */
+.canvas-knob-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+  width: 100%;
+  margin-top: 0.2rem;
+}
+
 .knob-section {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  padding: 1rem 0;
-  width: 100%;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.2rem;
+
+  padding: 1.4rem 1.6rem;
+  background: var(--color-bg-tertiary);
+  border: 7px solid var(--color-text-primary);
+  box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.25);
+  transform: rotate(-0.8deg) skewY(0.5deg);
+
+  width: max-content; 
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
+/* Inconsistent knob item sizing and spacing */
 .knob-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 80px;
+  gap: 1.2rem;
+}
+
+.knob-item:nth-child(even) {
+  transform: translateY(1rem);
+}
+
+.knob-item:nth-child(3n) {
+  transform: scaleY(1.05);
 }
 
 .knob-item label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #333;
+  font-size: 0.65rem;
+  font-weight: 900;
+  color: var(--color-text-primary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: monospace;
+  line-height: 1.2;
 }
 
+/* Knob sliders with raw borders, chaotic sizing */
 .knob-input {
   width: 80px;
   height: 120px;
-  margin: 0;
-}
-
-/* ================ NOTE SELECTOR ================ */
-.note-selector-container {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
-  max-width: 600px;
-  margin-top: -40px;
-}
-
-.note-row {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.note-button {
-  height: 40px;
-  width: 60px;
-  padding: 0;
-  background: var(--note-btn-gradient);
-  color: #000;
-  border: 2px solid rgb(72, 72, 72);
-  border-radius: 8px;
+  -webkit-appearance: slider-vertical;
+  writing-mode: bt-lr;
   cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: all 0.2s ease;
+  background: var(--color-bg-primary);
+  border: 4px solid var(--color-text-primary);
+  padding: 4px;
+  accent-color: var(--color-text-primary);
+  transition: all 0.1s;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.knob-input:nth-child(1) {
+  height: 130px;
+  border-width: 5px;
+}
+
+.knob-input:nth-child(2) {
+  height: 115px;
+  transform: scaleX(1.1);
+}
+
+.knob-input:hover {
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.18);
+  transform: translate(1px, -2px);
+}
+
+.knob-input:active {
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Note selector with chaotic positioning */
+.note-selector-item-container {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+/* Piano keyboard container - chaotic brutallist layout */
+.piano-keyboard-container {
+  background: var(--color-bg-primary);
+  border: 7px solid var(--color-text-primary);
+  padding: 1rem;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+  transform: rotate(0.5deg);
+  width: 95%;
+  margin-left: auto;
+  margin-right: 1%;
+  overflow: hidden;
+}
+
+/* Smaller, longer piano layout */
+.piano-keyboard {
   display: flex;
+  gap: 0;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+  position: relative;
+  height: 160px;
+  padding: 0.7rem 1rem;
+  background: var(--color-bg-secondary);
+  border: 4px solid var(--color-text-primary);
+  box-shadow: inset 3px 3px 0 rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+/* Smaller white keys */
+.piano-key.white-key {
+  width: 32px;
+  height: 140px;
+  background: #f5f5f5;
+  border: 2px solid var(--color-text-primary);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.5rem;
+  font-family: monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: all 0.1s;
+  display: flex;
+  align-items: flex-end;
+  align-self: flex-start;
   justify-content: center;
-  align-items: center;
+  padding-bottom: 6px;
+  position: relative;
+  color: var(--color-text-primary);
+  flex-shrink: 0;
+  overflow: visible;
+  white-space: nowrap;
+  /* Black keys no longer positioned absolute, use margin instead */
 }
 
-.note-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+/* Smaller black keys - nempel di atas */
+.piano-key.black-key {
+  width: 20px;
+  height: 90px;
+  background: #000000;
+  border: 2px solid var(--color-text-primary);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.45rem;
+  font-family: monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  transition: all 0.1s;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 4px;
+  position: relative;
+  color: #ffff00;
+  flex-shrink: 0;
+  overflow: visible;
+  white-space: nowrap;
+  /* Nempel ke atas container, overlap dengan white keys di samping */
+  align-self: flex-start;
+  margin-right: -6px;
 }
 
-.note-button.active {
-  background: var(--note-btn-active);
-  color: white;
-  transform: translateY(0);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+.key-label {
+  display: block;
+  line-height: 1;
+  /* Ensure label is visible */
+  pointer-events: none;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* ================ RESPONSIVE DESIGN ================ */
+/* Active key - bright, elevated appearance */
+.piano-key.active {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 4px 4px 0 rgba(255, 255, 0, 0.5), 6px 6px 0 rgba(0, 0, 0, 0.25) !important;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border-width: 3px;
+}
+
+.piano-key.active.black-key {
+  background: var(--color-bg-primary);
+  color: #000;
+}
+
+/* Hover effect */
+.piano-key:hover:not(.active) {
+  transform: translate(-1px, -1px) !important;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.15) !important;
+}
+
+.piano-key:active {
+  transform: translate(1px, 1px) !important;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .Body {
-    padding: 1rem;
+  .piano-keyboard {
+    height: 180px;
+    padding: 1rem 0.8rem;
+    gap: 0;
   }
-  
-  .canvas {
-    max-width: 100%;
-    height: 150px;
+
+  .piano-key.white-key {
+    width: 28px;
+    height: 120px;
+    font-size: 0.45rem;
   }
-  
-  .knob-section {
-    gap: 1rem;
-  }
-  
-  .knob-item {
-    min-width: 70px;
-  }
-  
-  .knob-input {
-    width: 70px;
-    height: 100px;
-  }
-  
-  .note-button {
-    width: 40px;
-    height: 35px;
-    font-size: 0.8rem;
-  }
-  
-  .button {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+
+  .piano-key.black-key {
+    width: 18px;
+    height: 80px;
+    font-size: 0.4rem;
   }
 }
 
 @media (max-width: 480px) {
-  .note-row {
-    gap: 0.3rem;
+  .piano-key.white-key {
+    width: 24px;
+    height: 100px;
+    font-size: 0.4rem;
   }
-  
+
+  .piano-key.black-key {
+    width: 16px;
+    height: 70px;
+    font-size: 0.35rem;
+  }
+
+  .piano-keyboard {
+    height: 150px;
+    padding: 0.8rem 0.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .Body {
+    padding: 1.5rem 1rem;
+  }
+
+  .synth-header {
+    font-size: 2.5rem;
+    transform: rotate(-1.5deg) translateX(-10px);
+  }
+
+  .canvas-knob-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .knob-section {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 2rem;
+    padding: 2rem;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .canvas {
+    height: 180px;
+    border-width: 6px;
+    max-width: 100%;
+  }
+
+  .button {
+    padding: 0.9rem 1.5rem;
+    font-size: 0.75rem;
+  }
+
+  .note-selector-container {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .Body {
+    padding: 1rem;
+  }
+
+  .synth-header {
+    font-size: 1.8rem;
+  }
+
+  .knob-section {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .knob-input {
+    width: 70px;
+    height: 100px;
+  }
+
   .note-button {
-    width: 27px;
-    height: 30px;
+    width: 45px;
+    height: 38px;
     font-size: 0.7rem;
   }
-  
-  .knob-item {
-    min-width: 60px;
-  }
-  
-  .knob-input {
-    width: 60px;
-    height: 80px;
+
+  .canvas {
+    height: 150px;
   }
 }
