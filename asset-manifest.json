@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/NgulikSynth/static/css/main.bb9f8612.css",
+    "main.css": "/NgulikSynth/static/css/main.a2cf0856.css",
     "main.js": "/NgulikSynth/static/js/main.06d6dfee.js",
     "static/js/453.30bcb3eb.chunk.js": "/NgulikSynth/static/js/453.30bcb3eb.chunk.js",
     "index.html": "/NgulikSynth/index.html",
-    "main.bb9f8612.css.map": "/NgulikSynth/static/css/main.bb9f8612.css.map",
+    "main.a2cf0856.css.map": "/NgulikSynth/static/css/main.a2cf0856.css.map",
     "main.06d6dfee.js.map": "/NgulikSynth/static/js/main.06d6dfee.js.map",
     "453.30bcb3eb.chunk.js.map": "/NgulikSynth/static/js/453.30bcb3eb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bb9f8612.css",
+    "static/css/main.a2cf0856.css",
     "static/js/main.06d6dfee.js"
   ]
 }
