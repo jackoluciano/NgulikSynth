@@ -84,7 +84,7 @@ body {
 
 .Body {
   background: var(--color-bg-primary);
-  min-height: 100vh;
+  min-height: 40vh;
   padding-inline: 1.2rem;
   padding-block: 0;
   display: flex;
